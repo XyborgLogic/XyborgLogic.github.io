@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Strategi Greedy ku</title>
+</head>
+<body>
+  <!-- Judul Utama -->
+  <h1>Tugas Strategi Greedy ku</h1>
+  <p>Oleh: <b>Habiby Sinaga (XI Inovatif)</b></p>
+  <p>Guru Pembimbing: <b>M. Irpan, S.Pd</b></p>
+  
+  <!-- Gasken itung pake Greedyku -->
+  <h3>Hitung Kembalian dengan Strategi Greedy dibawah ini ↓</h3>
+  
+  <label>Total Harga: </label>
+  <input type="number" id="harga"><br><br>
+  
+  <label>Uang yang diberikan: </label>
+  <input type="number" id="uang"><br><br>
+  
+  <button onclick="hitungKembalian()">Hitung</button>
+  
+  <pre id="hasil"></pre>
+  
+  <script>
+    function hitungKembalian() {
+      let pecahan = [100000, 50000, 20000, 10000, 5000, 2000, 1000, 500];
+      let total_harga = parseInt(document.getElementById("harga").value);
+      let uang_yang_diberikan = parseInt(document.getElementById("uang").value);
+      let kembalian = uang_yang_diberikan - total_harga;
+      
+      let output = "Kembalian: Rp " + kembalian + "\n";
+      output += "Pecahan uang yang dibutuhkan:\n";
+  
+      for (let uang of pecahan) {
+        let jumlah = Math.floor(kembalian / uang);
+        if (jumlah > 0) {
+          output += "Rp" + uang + " x " + jumlah + "\n";
+          kembalian = kembalian % uang;
+        }
+      }
+  
+      if (kembalian > 0) {
+        output += "Sisa yang tidak dapat dikembalikan: Rp " + kembalian;
+      }
+  
+      document.getElementById("hasil").innerText = output;
+    }
+  </script>
+</body>
+</html>
